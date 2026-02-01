@@ -1,0 +1,2 @@
+-- réservation 
+SELECT COUNT(*) FROM LOCATION_MATERIEL ; 

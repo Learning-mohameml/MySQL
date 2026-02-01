@@ -1,0 +1,13 @@
+DROP VIEW NbrReservFor ;
+
+CREATE VIEW NbrReservFor AS 
+SELECT NUMERO , ANNEE , MAX(RANG) as nbMax
+FROM RESERVATION_FORMATION
+GROUP BY NUMERO ,ANNEE ;
+
+
+DROP VIEW NBDISPOFOR ;
+CREATE VIEW NBDISPOFOR AS 
+SELECT Formation.IdFORM  , Formation.ANNEeFORM  , NBrPLACE - NbrReservFor.nbMax as  nbDispo  FROM NbrReservFor , Formation 
+WHERE NbrReservFor.NUMERO = Formation.IdFORM 
+AND NbrReservFor.ANNEE = Formation.ANNEeFORM ;
